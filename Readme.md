@@ -46,3 +46,9 @@ Initialize a Sequential CNN model
 - add BatchNormalization layer
 - add Dropout layer with rate of 50%
 - insert Dense layer with 12 units and softmax activation with L2 regularization term
+
+
+## Results
+
+![image](https://user-images.githubusercontent.com/80235375/236328538-0338f6ba-892d-48c0-a80c-45809a869a5d.png)
+
