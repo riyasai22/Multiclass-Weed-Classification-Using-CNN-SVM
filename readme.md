@@ -1,0 +1,6 @@
+Early identification and removal of plant and weed seedlings is crucial for efFicient crop management and weed control. Unwanted weed growth can have a negative impact on crop yield and quality, as they compete with
+the main crop for nutrients. This paper focuses on a hybrid methodology of using image processing, deep learning and machine learning techniques for the multiclass classification of plant and weeds seedlings. Using a combination
+of color-based segmentation, contrast enhancement, morphological operations, and CNN-SVM classifier, the proposed technique achieves high accuracy while being computationally ef icient. The proposed technique achieved
+a test accuracy of 88.45%, outperforming the existing technique that relied solely on CNNs for feature extraction and classification, which achieved a lower test accuracy of 80%. Comparison is done with existing transfer learning
+techniques MobileNet and VGG16 for classification, and the proposed model outperforms their performance results. Overall, the proposed technique shows great potential for improving the accuracy and ef iciency of multiclass
+classification of plant and weed seedlings, which has important implications for plant science and agriculture.
