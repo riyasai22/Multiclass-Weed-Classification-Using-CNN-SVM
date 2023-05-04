@@ -4,54 +4,55 @@ Early identification and removal of plant and weed seedlings is crucial for effi
 ## Segmentation 
 
 ### Algorithm
-
+```
 For each image i in testset:
-1. Apply Gaussian blur to i with kernel size of (5,5) and sigma=0, store result in blurr
-2. Convert blur from BGR color space to HSV color space, store result in hsv
-3. Define lower and upper thresholds for HSV color space
-4. Apply inRange function to hsv with lower and upper thresholds to create a binary mask, store result in mask
-5. Define a structuring element for morphological closing with an elliptical kernel of size (11,11), store result in struc
-6. Apply morphological closing to mask with struc, store result in mask
-7. Create a boolean mask by checking if the pixel values in mask are greater than 0, store result in boolean
-8. Create a new image array of zeros with same dimensions as i, of data type uint8, store result in new
-9. Copy pixels from i to new where boolean mask is True
-10. Apply Contrast Limited Adaptive Histogram Equalization (CLAHE) to new with clip limit=2.0 and tile size of (8,8), store result in clahe_img
-11. Yield clahe_img
+   Apply Gaussian blur to i with kernel size of (5,5) and sigma=0, store result in blurr
+   Convert blur from BGR color space to HSV color space, store result in hsv
+   Define lower and upper thresholds for HSV color space
+   Apply inRange function to hsv with lower and upper thresholds to create a binary mask, store result in mask
+   Define a structuring element for morphological closing with an elliptical kernel of size (11,11), store result in struc
+   Apply morphological closing to mask with struc, store result in mask
+   Create a boolean mask by checking if the pixel values in mask are greater than 0, store result in boolean
+   Create a new image array of zeros with same dimensions as i, of data type uint8, store result in new
+   Copy pixels from i to new where boolean mask is True
+   Apply Contrast Limited Adaptive Histogram Equalization (CLAHE) to new with clip limit=2.0 and tile size of (8,8), store result in clahe_img
+   Yield clahe_img
+```
 ### Results
 ![image](https://user-images.githubusercontent.com/80235375/236329901-620da1b1-0abb-42a8-85c4-a8a5746c4925.png)
 
 
 ## Classification Algorithm
 
-Algorithm
+```
 Initialize a Sequential CNN model
-- insert Conv2D layer with 64 filters and kernel size of (5,5) with ReLU activation
-- add BatchNormalization layer
-- insert Conv2D layer with 64 filters and kernel size of (5,5) with ReLU activation
-- add MaxPooling2D layer with pool size of (2,2)
-- add BatchNormalization layer
-- add Dropout layer with rate of 10%
-- insert Conv2D layer with 128 filters and kernel size of (5,5) with ReLU activation
-- add BatchNormalization layer
-- insert Conv2D layer with 128 filters and kernel size of (5,5) with ReLU activation
-- add MaxPooling2D layer with pool size of (2,2)
-- add BatchNormalization layer
-- add Dropout layer with rate of 10%
-- insert Conv2D layer with 256 filters and kernel size of (5,5) with ReLU activation
-- add BatchNormalization layer
-- insert Conv2D layer with 256 filters and kernel size of (5,5) with ReLU activation
-- add MaxPooling2D layer with pool size of (2,2)
-- add BatchNormalization layer
-- add Dropout layer with rate of 10%
-- insert Flatten layer
-- insert Dense layer with 256 units and ReLU activation
-- add BatchNormalization layer
-- add Dropout layer with rate of 50%
-- insert Dense layer with 256 units and ReLU activation
-- add BatchNormalization layer
-- add Dropout layer with rate of 50%
-- insert Dense layer with 12 units and softmax activation with L2 regularization term
-
+ insert Conv2D layer with 64 filters and kernel size of (5,5) with ReLU activation
+ add BatchNormalization layer
+ insert Conv2D layer with 64 filters and kernel size of (5,5) with ReLU activation
+ add MaxPooling2D layer with pool size of (2,2)
+ add BatchNormalization layer
+ add Dropout layer with rate of 10%
+ insert Conv2D layer with 128 filters and kernel size of (5,5) with ReLU activation
+ add BatchNormalization layer
+ insert Conv2D layer with 128 filters and kernel size of (5,5) with ReLU activation
+ add MaxPooling2D layer with pool size of (2,2)
+ add BatchNormalization layer
+ add Dropout layer with rate of 10%
+ insert Conv2D layer with 256 filters and kernel size of (5,5) with ReLU activation
+ add BatchNormalization layer
+ insert Conv2D layer with 256 filters and kernel size of (5,5) with ReLU activation
+ add MaxPooling2D layer with pool size of (2,2)
+ add BatchNormalization layer
+ add Dropout layer with rate of 10%
+ insert Flatten layer
+ insert Dense layer with 256 units and ReLU activation
+ add BatchNormalization layer
+ add Dropout layer with rate of 50%
+ insert Dense layer with 256 units and ReLU activation
+ add BatchNormalization layer
+ add Dropout layer with rate of 50%
+ insert Dense layer with 12 units and softmax activation with L2 regularization term
+```
 ## Performance Evaluation
 On conduction experiments and comparing the model’s performance with 4 different models, keeping the hyperparameters fixed as batch size 32 for varying epochs. The models include a base 5 layer CNN model, two transfer learning based models - VGG16 and MobileNetV2 and our proposed CNN+SVM model.
 - 5 Layer CNN: This model solely uses CNN for the classification process. It was trained for 100 epochs and achieved a validation accuracy of 78.3% and a test accuracy of 95.0%.
